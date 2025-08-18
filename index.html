@@ -282,33 +282,63 @@
     </footer>
 </body>
 <script>
-    // Script para calcular dinamicamente a altura do header
-function updateHeaderHeight() {
+    function updateHeaderHeight() {
+        const header = document.querySelector('header');
+        if (header) {
+            const headerHeight = header.offsetHeight;
+            document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+        }
+    }
+
+    window.addEventListener('load', updateHeaderHeight);
+
+    window.addEventListener('resize', updateHeaderHeight);
+
+    updateHeaderHeight();
+
+    const headerObserver = new MutationObserver(updateHeaderHeight);
     const header = document.querySelector('header');
     if (header) {
-        const headerHeight = header.offsetHeight;
-        document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+        headerObserver.observe(header, { 
+            childList: true, 
+            subtree: true, 
+            attributes: true 
+        });
     }
-}
 
-// Atualizar na carga da página
-window.addEventListener('load', updateHeaderHeight);
+    document.addEventListener("DOMContentLoaded", function () {
+        function scrollToSection(selector) {
+            const section = document.querySelector(selector);
+            const headerHeight = document.querySelector("header").offsetHeight;
+            if (section) {
+                const sectionTop = section.offsetTop - headerHeight; 
+                window.scrollTo({ top: sectionTop, behavior: "smooth" });
+            }
+        }
 
-// Atualizar no redimensionamento da tela
-window.addEventListener('resize', updateHeaderHeight);
+        document.querySelectorAll('header .nav a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href'); 
+                scrollToSection(targetId);
+            });
+        });
 
-// Chamar imediatamente para evitar flash
-updateHeaderHeight();
+        const btnHeader = document.querySelector('.agendar button');
+        if (btnHeader) {
+            btnHeader.addEventListener('click', function () {
+                scrollToSection('#contact');
+            });
+        }
 
-// Observador para mudanças no conteúdo do header
-const headerObserver = new MutationObserver(updateHeaderHeight);
-const header = document.querySelector('header');
-if (header) {
-    headerObserver.observe(header, { 
-        childList: true, 
-        subtree: true, 
-        attributes: true 
+        const btnMain = document.getElementById('agendar');
+        if (btnMain) {
+            btnMain.addEventListener('click', function () {
+                scrollToSection('#contact');
+            });
+        }
     });
-}
 </script>
+
+
 </html>
