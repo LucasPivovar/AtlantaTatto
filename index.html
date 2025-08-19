@@ -18,12 +18,12 @@
                 <p>Fineline & Botanical Art</p>
             </div>
         </div>
-        <div class="nav">
-            <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Comments</a></li>
-                <li><a href="#">Contact</a></li>
+        <div class="nav-container">
+            <ul class="nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#comments">Comments</a></li>
+            <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
         <div class="agendar">
@@ -53,38 +53,36 @@
             </div>
         </section>
 
-        <section class="section-about">
-            <div class="container_about">
-                <span><img src="./assets/images/leaf-icon.png" alt="Logo" class="logos">Sobre o Estúdio</span>
-                <h1>Arte que <strong>floresce </strong>na pele</h1>
-                <p>No Atlanta Tattoo, acreditamos que cada tatuagem deve ser uma extensão <br>natural do seu ser. Especializados em fineline botânico, criamos arte delicada <br>que celebra a beleza da natureza com técnicas veganas e sustentáveis.</p>
-                <div class="cards">
-                    <div class="card">
-                        <img src="./assets/images/leaf-icon.png" alt="Logo" class="logo">
-                        <h2>100% Vegano</h2>
-                        <p>Utilizamos apenas tintas veganas e produtos cruelty-free, respeitando todos os seres vivos.</p>
-                    </div>
-                    <div class="card">
-                        <img src="./assets/images/paint.png" alt="Logo" class="logo">
-                        <h2>Técnica Fineline</h2>
-                        <p>Especialistas em traços ultra-finos que capturam a delicadeza e sutileza da natureza.</p>
-                    </div>
-                    <div class="card">
-                        <img src="./assets/images/heart.png" alt="Logo" class="logo">
-                        <h2>Arte Consciente</h2>
-                        <p>Cada tatuagem é pensada para harmonizar com seu corpo e conectar você à natureza.</p>
-                    </div>
+        <section id="about" class="section-about section">
+            <span><img src="./assets/images/leaf-icon.png" alt="Logo" class="logos header-section-logo">Sobre o Estúdio</span>
+            <h1>Arte que <strong>floresce </strong>na pele</h1>
+            <p>No Atlanta Tattoo, acreditamos que cada tatuagem deve ser uma extensão <br>natural do seu ser. Especializados em fineline botânico, criamos arte delicada <br>que celebra a beleza da natureza com técnicas veganas e sustentáveis.</p>
+            <div class="cards">
+                <div class="card-about">
+                    <img src="./assets/images/leaf-icon.png" alt="Logo" class="logo">
+                    <h2>100% Vegano</h2>
+                    <p>Utilizamos apenas tintas veganas e produtos cruelty-free, respeitando todos os seres vivos.</p>
                 </div>
-                <div class="desc">
-                    <h2>Nossa Filosofia</h2>
-                    <p>Acreditamos que a tatuagem é uma forma de arte que deve respeitar tanto o corpo quanto o meio ambiente. Por isso, trabalhamos exclusivamente com produtos veganos, tintas livres de crueldade animal e técnicas que minimizam o impacto na pele. Cada traço é pensado para criar uma conexão harmoniosa entre você e a natureza, resultando em obras de arte únicas e significativas.</p>
+                <div class="card-about">
+                    <img src="./assets/images/paint.png" alt="Logo" class="logo">
+                    <h2>Técnica Fineline</h2>
+                    <p>Especialistas em traços ultra-finos que capturam a delicadeza e sutileza da natureza.</p>
                 </div>
+                <div class="card-about">
+                    <img src="./assets/images/heart.png" alt="Logo" class="logo">
+                    <h2>Arte Consciente</h2>
+                    <p>Cada tatuagem é pensada para harmonizar com seu corpo e conectar você à natureza.</p>
+                </div>
+            </div>
+            <div class="desc">
+                <h2>Nossa Filosofia</h2>
+                <p>Acreditamos que a tatuagem é uma forma de arte que deve respeitar tanto o corpo quanto o meio ambiente. Por isso, trabalhamos exclusivamente com produtos veganos, tintas livres de crueldade animal e técnicas que minimizam o impacto na pele. Cada traço é pensado para criar uma conexão harmoniosa entre você e a natureza, resultando em obras de arte únicas e significativas.</p>
             </div>
         </section>
 
-        <section class="section-gallery">
+        <section id="gallery" class="section-gallery section">
             <div class="container_gallery">
-                <span><img src="./assets/images/leaf-icon.png" alt="Logo" class="logos">Galeria</span>
+                <span><img src="./assets/images/leaf-icon.png" alt="Logo" class="logos header-section-logo">Galeria</span>
                 <h1>Nosso <strong>Portfolio</strong> natural</h1>
                 <p>Cada peça é única, inspirada na delicadeza da natureza e criada com técnicas fineline que respeitam a harmonia do corpo.</p>
                 <div class="gallery">
@@ -99,8 +97,8 @@
         </section>
 
 
-    <section class="section-comments">
-            <span><img src="./assets/images/leaf-icon.png" alt="Logo" class="logos">Depoimentos</span>
+        <section id="comments" class="section-comments section">
+            <span><img src="./assets/images/leaf-icon.png" alt="Logo" class="logos header-section-logo">Depoimentos</span>
             <h1>Histórias que <strong>florescem</strong></h1>
             <p>Cada cliente é único, e cada história nos inspira a continuar criando arte com consciência e delicadeza</p>
 
@@ -179,7 +177,7 @@
             </div>
         </section>
 
-        <section class="section-contact">
+        <section id="contact" class="section-contact section">
             <span><img src="./assets/images/leaf-icon.png" alt="Logo" class="logos">Contato</span>
             <h1>Vamos <strong>cultivar</strong> sua arte</h1>
             <p>Entre em contato conosco para agendar uma consulta. Cada projeto começa com uma conversa.</p>
@@ -291,19 +289,13 @@
     }
 
     window.addEventListener('load', updateHeaderHeight);
-
     window.addEventListener('resize', updateHeaderHeight);
-
     updateHeaderHeight();
 
     const headerObserver = new MutationObserver(updateHeaderHeight);
     const header = document.querySelector('header');
     if (header) {
-        headerObserver.observe(header, { 
-            childList: true, 
-            subtree: true, 
-            attributes: true 
-        });
+        headerObserver.observe(header, { childList: true, subtree: true, attributes: true });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -319,7 +311,7 @@
         document.querySelectorAll('header .nav a').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href'); 
+                const targetId = this.getAttribute('href');
                 scrollToSection(targetId);
             });
         });
@@ -339,6 +331,5 @@
         }
     });
 </script>
-
 
 </html>
